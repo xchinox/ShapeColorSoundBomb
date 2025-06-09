@@ -1,0 +1,38 @@
+[package]
+name = "shape_color_sound_bomb"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.9.0"
+getrandom = { version = "0.3", features = ["wasm_js"] }
+# getrandom = { version = "0.3", features = [] }
+bevy = "0.16.0"
+bevy-inspector-egui = "0.31.0"
+grid = "0.17.0"
+uuid = "1.17.0"
+bevy_rich_text3d = "0.3.0"
+[features]
+
+
+
+# Idiomatic Bevy code often triggers these lints, and the CI workflow treats them as errors.
+# In some cases they may still signal poor code quality however, so consider commenting out these lines.
+[lints.clippy]
+# Bevy supplies arguments to systems via dependency injection, so it's natural for systems to
+# request more than 7 arguments -- which triggers this lint.
+too_many_arguments = "allow"
+# Queries that access many components may trigger this lint.
+type_complexity = "allow"
+
+
+# Compile with Performance Optimizations:
+# https://bevyengine.org/learn/quick-start/getting-started/setup/#compile-with-performance-optimizations
+
+# Enable a small amount of optimization in the dev profile.
+[profile.dev]
+opt-level = 1
+
+# Enable a large amount of optimization in the dev profile for dependencies.
+[profile.dev.package."*"]
+opt-level = 3
